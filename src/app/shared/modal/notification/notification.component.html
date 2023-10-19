@@ -1,0 +1,33 @@
+<div class="container px-3">
+  <div *ngIf="title"
+       class="row my-4">
+    <div class="col">
+      <div class="title">
+        {{title | translate}}
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="content">
+    <div *ngFor="let paragraph of content"
+         class="row">
+      <div class="col">
+        <p>
+          {{paragraph | translate}}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  <div class="row">
+    <div class="col">
+      <div class="footer">
+        <ion-button (click)="dismiss()"
+                    expand="block"
+                    [fill]="buttonStyle"
+                    class="mt-4"
+                    color="white">
+          {{buttonText | translate}}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>

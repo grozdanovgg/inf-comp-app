@@ -1,0 +1,251 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+@use "src/theme/bootstrap-custom.scss";
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+html,
+body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: white;
+  background: black;
+}
+
+h4 {
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+/*
+Since the ion-tab-bar is now resting at the bottom of the view, commonly position fixed elements will
+display on the tab bar and/or under the tab bar (for example it will be a problem for the ion-fab and ion-footer).
+To get around this, we need to create a global style that applies the same offset that we use for the padding-bottom
+of the ion-content element.
+*/
+ion-fab,
+ion-footer {
+  bottom: var(--comp-tab-bar-height);
+}
+
+ion-content {
+  --ion-background-color: linear-gradient(#0b0b0b, #0e1322);
+  --ion-background-color-rgb: linear-gradient(rgba(11, 11, 11, 1), rgba(14, 19, 34, 1));
+}
+
+ion-tabs {
+  --ion-background-color: linear-gradient(#1f2227, #0b0b0b);
+  --ion-background-color: linear-gradient(rgba(31, 34, 39, 0), rgba(11, 11, 11, 1));
+}
+
+ion-tab-bar {
+  --border: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+ion-card {
+  --color: white;
+}
+
+ion-title {
+  font-weight: 600;
+}
+
+ion-item {
+  --background: var(--ion-color-dark);
+  --padding-start: 0;
+  --inner-padding-start: 0;
+  --border-color: var(--ion-color-dark);
+  --border-radius: 4px;
+  --border-width: 1px;
+  --border-style: solid;
+  --detail-icon-opacity: 1;
+
+  &.attention {
+    --border-color: white;
+  }
+}
+
+ion-button {
+  --border-width: 1px;
+  text-transform: none;
+  height: 3.375rem;
+  font-size: 1rem;
+}
+
+ion-modal {
+  --border-radius: 8px;
+  --background: #0a1019;
+  --min-width: 320px;
+  --max-height: 100%;
+  --max-width: 100%;
+  backdrop-filter: blur(0.5rem);
+
+  ion-content {
+    --color: white;
+    --background: #131417;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+  }
+}
+
+ion-alert {
+  --background: #0a1019;
+
+  &.incompatability-alert {
+    --backdrop-opacity: 1;
+
+    & ion-backdrop {
+      background-image: url('/assets/images/login-screen.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+    }
+  }
+}
+
+.modal-fullscreen {
+  --height: 100%;
+  --width: 100%;
+}
+
+.modal-extra-large {
+  --max-height: 26rem;
+  --max-width: 20rem;
+}
+
+.modal-large {
+  --max-height: 24rem;
+  --max-width: 20rem;
+}
+
+.modal-medium {
+  --max-height: 22rem;
+  --max-width: 20rem;
+}
+
+.modal-small {
+  --max-height: 20rem;
+  --max-width: 20rem;
+}
+
+.modal-extra-small {
+  --max-height: 18rem;
+  --max-width: 20rem;
+}
+
+.loading-indicator {
+  background-color: black;
+  z-index: 9000;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  width: 150px;
+  max-width: 50%;
+  align-self: center;
+  margin-bottom: 160px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .modal-extra-large {
+    --max-height: 25rem;
+    --max-width: 26rem;
+  }
+
+  .modal-large {
+    --max-height: 22.5rem;
+    --max-width: 26rem;
+  }
+
+  .modal-medium {
+    --max-height: 18.5rem;
+    --max-width: 26rem;
+  }
+
+  .modal-small {
+    --max-height: 13rem;
+    --max-width: 26rem;
+  }
+}
+
+.blur-out {
+  animation: blur-out 4s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite both;
+}
+
+@keyframes blur-out {
+  0% {
+    filter: blur(0.01);
+  }
+
+  50% {
+    letter-spacing: -0.5em;
+    filter: blur(12px) opacity(0%);
+  }
+
+  100% {
+    filter: blur(0.01);
+  }
+}
+
+// BarcodeScanner related styling, needed to control displaying of the scanner
+.qr-scanner-container {
+  display: none;
+}
+
+.ion-app {
+  visibility: visible;
+}
+
+body.qr-scanner-active {
+  background-color: transparent;
+
+  & .qr-scanner-container {
+    display: flex;
+  }
+
+  & .ion-app {
+    visibility: hidden;
+  }
+}

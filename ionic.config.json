@@ -1,0 +1,8 @@
+{
+  "name": "Infinite Fleet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "30ee18e4"
+}

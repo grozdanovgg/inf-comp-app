@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Infinite Fleet</string>
+    <string name="title_activity_main">Infinite Fleet</string>
+    <string name="package_name">infinite.fleet.companion</string>
+    <string name="custom_url_scheme">infinite.fleet.companion</string>
+    <string name="custom_url_host">exordium.eu.auth0.com</string>
+</resources>

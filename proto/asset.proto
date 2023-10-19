@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package inf.platform.public.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "inf-platform/proto/public/v1";
+option csharp_namespace = "Px.Platform.Public.v1";
+
+enum AssetAvailabilityStatus {
+    ASSET_AVAILABILITY_STATUS_UNSPECIFIED = 0;
+    ASSET_AVAILABILITY_STATUS_ASSIGNED = 1;
+    ASSET_AVAILABILITY_STATUS_PENDING_WITHDRAW = 2;
+    ASSET_AVAILABILITY_STATUS_UNKNOWN = 3;
+    ASSET_AVAILABILITY_STATUS_FROZEN = 4;
+    }
+
+service AssetService {
+
+    // GetAssets
+    // Retrieves the list of the assets: ships, space stations, etc. (That included the non-NFT assets)
+    // > The asset should be granted to the currently selected commander.
+    // > This should not fail.
+    rpc GetAssets(google.protobuf.Empty) returns (GetAssetsResponse);
+
+    // RequestWithdraw
+    // An NFT asset can be requested to be withdrawn from the game. It changes the status of the asset.
+    // > This can fail if the asset is not in standby state.
+    rpc RequestWithdraw(RequestWithdrawRequest) returns (google.protobuf.Empty);
+
+    rpc CancelRequestWithdraw(CancelRequestWithdrawRequest) returns (CancelRequestWithdrawResponse);
+
+}
+
+message GetAssetsResponse {
+    repeated Asset assets = 1;
+}
+
+message RequestWithdrawRequest {
+    string asset_id = 1;
+}
+
+message CancelRequestWithdrawRequest {
+    string asset_id = 1;
+}
+
+message CancelRequestWithdrawResponse {
+}
+
+// - `asset_id`: the ID of the asset
+// - `owner_updated_at`: the last date and time when owner updated the asset. It can be empty for NFT asset when bought
+message Asset {
+    string asset_id = 1;
+    optional google.protobuf.Timestamp owner_updated_at = 2;
+    AssetAvailabilityStatus availability_status = 3;
+
+}

@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="loadingIndicatorService.isLoading('settingsPage')"
+       class="loading-indicator">
+    <img class="logo blur-out position-absolute top-50 start-50 translate-middle"
+         src="assets/images/logo.svg"
+         alt="Logo"/>
+  </div>
+  <ion-header [translucent]="true">
+    <ion-toolbar color="translucent">
+      <ion-title class="settings-title" >{{"settings.title" | translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngIf="hasWallet; else setupWalletCard"
+                  button
+                  detail
+                  (click)="openMyWallet()">
+          <ion-label class="ion-text-wrap">
+            <h2 translate="settings.myWalletButton"></h2>
+            <p translate="settings.myWalletButtonNote"></p>
+          </ion-label>
+        </ion-item>
+        <ng-template #setupWalletCard>
+          <ion-item button
+                    detail
+                    class="attention"
+                    (click)="setupWallet()">
+            <ion-label class="ion-text-wrap">
+              <ion-icon name="alert-circle-outline"
+                        class="alert-icon ion-float-left"></ion-icon>
+              <h2 translate="settings.setupWalletButton"></h2>
+              <p translate="settings.setupWalletButtonNote"></p>
+            </ion-label>
+          </ion-item>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item (click)="openUserAccountUrl()"
+                  routerDirection="forward"
+                  detail>
+          <ion-label class="ion-text-wrap">
+            <h2 translate="settings.myAccountButton"></h2>
+            <p translate="settings.myAccountButtonNote"></p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button (click)="logout()"
+              class="logout-button"
+              expand="block"
+              fill="outline"
+              color="white">{{'settings.logoutButton' | translate}}</ion-button>
+</ion-content>

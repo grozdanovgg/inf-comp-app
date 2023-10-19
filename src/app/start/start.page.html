@@ -1,0 +1,27 @@
+<div class="start-page-container">
+  <img class="logo"
+       src="assets/images/logo.svg"
+       alt="Logo" />
+  <h4 class="text-center">
+    {{'Infinite fleet' | uppercase }}
+  </h4>
+  <p class="text-center mb-4"
+     [innerHTML]="'start.welcome' | translate"></p>
+  <div *ngIf="!featuresControlService.versionCheckInProgress; else spinner">
+    <ion-button class="ps-2 pe-2"
+                expand="block"
+                size="large"
+                color="primary"
+                (click)="login()">
+      <span class="font-500"
+            translate="start.signIn"></span>
+    </ion-button>
+    <div class="text-center font-500 mt-4">{{'start.askIfUserHasAnAccount' | translate}} <a
+         (click)="openSignUpUrl($event)"
+         translate="start.signUp"></a>
+    </div>
+  </div>
+  <ng-template #spinner>
+    <ion-spinner class="version-check-spinner align-self-center"></ion-spinner>
+  </ng-template>
+</div>

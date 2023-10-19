@@ -1,0 +1,77 @@
+<ion-content>
+  <ion-header [translucent]="true">
+    <ion-toolbar color="translucent">
+      <ion-title class="my-wallet-title">
+        {{'settings.myWallet.title' | translate | uppercase}}
+      </ion-title>
+      <ion-buttons slot="primary">
+        <ion-button (click)="onClose()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="mt-3 ion-text-wrap">
+            <h3>{{"settings.myWalletPublicKey" | translate | uppercase}}</h3>
+            <h2 class="mb-0 fw-bold">{{'fhd384ygt7839hf82374fh387' | obscure : obscured}}</h2>
+          </ion-label>
+          <ion-icon [name]="obscured ? 'eye-outline' : 'eye-off-outline'"
+                    (click)="toggleShowKey()"
+                    slot="end"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="mt-3 ion-text-wrap">
+            <h3>{{"settings.myWalletINFBalance" | translate | uppercase}}</h3>
+            <h2 class="mb-0 fw-bold">
+              {{"settings.myWalletINFBalanceValue" | translate : {balance: 36.2715} }}
+            </h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label class="mt-3 ion-text-wrap">
+            <h3>{{"settings.myWalletAssets" | translate | uppercase}}</h3>
+            <h2 class="mb-0 fw-bold">{{2}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="mt-3 ion-text-wrap">
+            <h3>{{"settings.myWalletLBTCBalance" | translate | uppercase}}</h3>
+            <h2 class="mb-0 fw-bold">
+              {{"settings.myWalletLBTCBalanceValue" | translate : {balance: 0.1412} }}
+            </h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block"
+                    fill="solid"
+                    color="white">{{"settings.myWalletCloneWallet" | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block"
+                    fill="outline"
+                    color="white">{{"settings.myWalletRestoreWallet" | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

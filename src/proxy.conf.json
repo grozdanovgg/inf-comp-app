@@ -1,0 +1,8 @@
+{
+    "/backend": {
+        "target": "https://dev-vnl8io8nsfazar3.inf-store.infinitefleet.net",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

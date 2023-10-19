@@ -1,0 +1,15 @@
+<div class="qr-scanner-container">
+  <div class="dimmed-area">
+    <div class="header"
+         (click)="cancel()">
+      <ion-icon name="chevron-back-outline"
+                class="me-3">
+      </ion-icon>
+      <ion-label>{{'settings.importWallet.back' | translate | uppercase}}</ion-label>
+    </div>
+    <div>
+      <p [innerHTML]="'settings.importWallet.qrScannerNote' | translate"></p>
+    </div>
+    <div class="visible-area"></div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<ion-content overflow-scroll="false">
+  <div *ngIf="loadingIndicatorService.isLoading('generateWarehouseWebComponent')"
+       class="loading-indicator">
+    <img class="logo blur-out position-absolute top-50 start-50 translate-middle"
+         src="assets/images/logo.svg"
+         alt="Logo"/>
+  </div>
+  <div #warehouseContainer
+       class="warehouse-container">
+  </div>
+</ion-content>
